@@ -47,15 +47,23 @@ SRC= $(SPECSRC) cpptod.dd ctod.dd pretod.dd cppcontracts.dd index.dd overview.dd
 	32-64-portability.dd dll-linux.dd bugstats.php.dd getstarted.dd \
 	css\cssmenu.css.dd ctarguments.dd
 
-SPECSRC=spec.dd intro.dd lex.dd grammar.dd module.dd declaration.dd type.dd property.dd	\
-	attribute.dd pragma.dd expression.dd statement.dd arrays.dd			\
-	hash-map.dd struct.dd class.dd interface.dd enum.dd const3.dd		\
-	function.dd operatoroverloading.dd template.dd template-mixin.dd	\
-	contracts.dd version.dd traits.dd errors.dd unittest.dd garbage.dd		\
-	float.dd iasm.dd ddoc.dd interfaceToC.dd cpp_interface.dd objc_interface.dd			\
-	portability.dd entity.dd memory-safe-d.dd abi.dd simd.dd
+SPECSRC=language\spec.dd language\intro.dd language\lex.dd \
+	language\grammar.dd language\module.dd language\declaration.dd \
+	language\type.dd language\property.dd language\attribute.dd \
+	language\pragma.dd language\expression.dd language\statement.dd \
+	language\arrays.dd language\hash-map.dd language\struct.dd \
+	language\class.dd language\interface.dd language\enum.dd \
+	language\const3.dd language\function.dd \
+	language\operatoroverloading.dd language\template.dd \
+	language\template-mixin.dd language\contracts.dd language\version.dd \
+	language\traits.dd language\errors.dd language\unittest.dd \
+	language\garbage.dd language\float.dd language\iasm.dd \
+	language\ddoc.dd language\interfaceToC.dd language\cpp_interface.dd \
+	language\objc_interface.dd language\portability.dd language\entity.dd \
+	language\memory-safe-d.dd language\abi.dd language\simd.dd
 
 DDOC=macros.ddoc html.ddoc dlang.org.ddoc windows.ddoc doc.ddoc $(NODATETIME)
+LANGUAGE_DDOC=$(DDOC) language\language.ddoc
 
 DDOC_STD=std.ddoc std_navbar-release.ddoc modlist-release.ddoc
 
@@ -67,13 +75,23 @@ IMG=dmlogo.gif cpp1.gif d002.ico c1.gif d3.png d4.gif d5.gif favicon.gif
 
 PREMADE=dcompiler.html language-reference.html appendices.html howtos.html articles.html d-keyring.gpg
 
-TARGETS=cpptod.html ctod.html pretod.html cppcontracts.html index.html overview.html	\
-	intro.html spec.html lex.html grammar.html module.html declaration.html type.html	\
-	property.html attribute.html pragma.html expression.html statement.html	\
-	arrays.html struct.html class.html enum.html function.html		\
-	operatoroverloading.html template.html mixin.html contracts.html version.html	\
-	errors.html garbage.html memory.html float.html iasm.html		\
-	interface.html portability.html entity.html abi.html windows.html	\
+SPECTARGETS=language\spec.html language\intro.html language\lex.html \
+	language\grammar.html language\module.html language\declaration.html \
+	language\type.html language\property.html language\attribute.html \
+	language\pragma.html language\expression.html language\statement.html \
+	language\arrays.html language\hash-map.html language\struct.html \
+	language\class.html language\interface.html language\enum.html \
+	language\const3.html language\function.html \
+	language\operatoroverloading.html language\template.html \
+	language\template-mixin.html language\contracts.html language\version.html \
+	language\traits.html language\errors.html language\unittest.html \
+	language\garbage.html language\float.html language\iasm.html \
+	language\ddoc.html language\interfaceToC.html language\cpp_interface.html \
+	language\portability.html language\entity.html language\memory-safe-d.html \
+	language\abi.html language\simd.html
+
+TARGETS= $(SPECTARGETS) cpptod.html ctod.html pretod.html cppcontracts.html index.html overview.html	\
+	mixin.html memory.html windows.html \
 	dll.html htomodule.html faq.html dstyle.html wc.html \
 	changelog\2.000.html changelog\2.001.html changelog\2.002.html \
 	changelog\2.003.html changelog\2.004.html changelog\2.005.html \
@@ -150,15 +168,9 @@ dmd-windows.html : $(DDOC) windows.ddoc dcompiler.dd
 
 32-64-portability.html : $(DDOC) 32-64-portability.dd
 
-abi.html : $(DDOC) abi.dd
-
 acknowledgements.html : $(DDOC) acknowledgements.dd
 
-arrays.html : $(DDOC) arrays.dd
-
 ascii-table.html : $(DDOC) ascii-table.dd
-
-attribute.html : $(DDOC) attribute.dd
 
 bug-stats.php.html : $(DDOC) bug-stats.php.dd
 
@@ -315,8 +327,6 @@ changelog\2.069.1.html : $(CHANGELOG_DDOC) changelog\2.069.1.dd
 changelog\index.html : $(CHANGELOG_DDOC) changelog\index.dd
 	$(DMD) -o- -c -D -Df$*.html $(CHANGELOG_DDOC) $*.dd
 
-class.html : $(DDOC) class.dd
-
 code_coverage.html : $(DDOC) code_coverage.dd
 
 COM.html : $(DDOC) COM.dd
@@ -325,11 +335,7 @@ comparison.html : $(DDOC) comparison.dd
 
 concepts.html : $(DDOC) concepts.dd
 
-const3.html : $(DDOC) const3.dd
-
 const-faq.html : $(DDOC) const-faq.dd
-
-cpp_interface.html : $(DDOC) cpp_interface.dd
 
 cppcontracts.html : $(DDOC) cppcontracts.dd
 
@@ -343,12 +349,6 @@ D1toD2.html : $(DDOC) D1toD2.dd
 
 d-floating-point.html : $(DDOC) d-floating-point.dd
 
-contracts.html : $(DDOC) contracts.dd
-
-ddoc.html : $(DDOC) ddoc.dd
-
-declaration.html : $(DDOC) declaration.dd
-
 deprecate.html : $(DDOC) deprecate.dd
 
 dll.html : $(DDOC) dll.dd
@@ -359,33 +359,15 @@ download.html : $(DDOC) download.dd
 
 dstyle.html : $(DDOC) dstyle.dd
 
-entity.html : $(DDOC) entity.dd
-
-enum.html : $(DDOC) enum.dd
-
-errors.html : $(DDOC) errors.dd
-
-exception-safe.html : $(DDOC) exception-safe.dd
-
-expression.html : $(DDOC) expression.dd
-
 faq.html : $(DDOC) faq.dd
 
 features2.html : $(DDOC) features2.dd
-
-float.html : $(DDOC) float.dd
-
-function.html : $(DDOC) function.dd
-
-garbage.html : $(DDOC) garbage.dd
 
 getstarted.html : $(DDOC) getstarted.dd
 
 glossary.html : $(DDOC) glossary.dd
 
-gpg_keys.html : $(DDOC) gpg_keys.dd
-
-hash-map.html : $(DDOC) hash-map.dd
+exception-safe.html : $(DDOC) exception-safe.dd
 
 hijack.html : $(DDOC) hijack.dd
 
@@ -395,49 +377,144 @@ htod.html : $(DDOC) htod.dd
 
 htomodule.html : $(DDOC) htomodule.dd
 
-iasm.html : $(DDOC) iasm.dd
-
-interface.html : $(DDOC) interface.dd
-
-interfaceToC.html : $(DDOC) interfaceToC.dd
-
 index.html : $(DDOC) index.dd
-
-intro.html : $(DDOC) intro.dd
 
 intro-to-datetime.html : $(DDOC) intro-to-datetime.dd
 
+gpg_keys.html : $(DDOC) gpg_keys.dd
+
+language\abi.html : $(LANGUAGE_DDOC) language\abi.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\arrays.html : $(LANGUAGE_DDOC) language\arrays.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+
+language\attribute.html : $(LANGUAGE_DDOC) language\attribute.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\class.html : $(LANGUAGE_DDOC) language\class.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\const3.html : $(LANGUAGE_DDOC) language\const3.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\contracts.html : $(LANGUAGE_DDOC) language\contracts.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\cpp_interface.html : $(LANGUAGE_DDOC) language\cpp_interface.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\ddoc.html : $(LANGUAGE_DDOC) language\ddoc.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\declaration.html : $(LANGUAGE_DDOC) language\declaration.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\entity.html : $(LANGUAGE_DDOC) language\entity.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\enum.html : $(LANGUAGE_DDOC) language\enum.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\errors.html : $(LANGUAGE_DDOC) language\errors.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\expression.html : $(LANGUAGE_DDOC) language\expression.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\float.html : $(LANGUAGE_DDOC) language\float.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\function.html : $(LANGUAGE_DDOC) language\function.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\garbage.html : $(LANGUAGE_DDOC) language\garbage.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\grammar.html : $(LANGUAGE_DDOC) language\grammar.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\hash-map.html : $(LANGUAGE_DDOC) language\hash-map.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\iasm.html : $(LANGUAGE_DDOC) language\iasm.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\interface.html : $(LANGUAGE_DDOC) language\interface.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\interfaceToC.html : $(LANGUAGE_DDOC) language\interfaceToC.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\intro.html : $(LANGUAGE_DDOC) language\intro.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\objc_interface.html : $(LANGUAGE_DDOC) language\objc_interface.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\lex.html : $(LANGUAGE_DDOC) language\lex.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\memory-safe-d.html : $(LANGUAGE_DDOC) language\memory-safe-d.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\module.html : $(LANGUAGE_DDOC) language\module.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\operatoroverloading.html : $(LANGUAGE_DDOC) language\operatoroverloading.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\portability.html : $(LANGUAGE_LANGUAGE_DDOC) language\portability.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\pragma.html : $(LANGUAGE_DDOC) language\pragma.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\property.html : $(LANGUAGE_DDOC) language\property.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\simd.html : $(LANGUAGE_DDOC) language\simd.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\spec.html : $(LANGUAGE_DDOC) language\spec.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\statement.html : $(LANGUAGE_DDOC) language\statement.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\struct.html : $(LANGUAGE_DDOC) language\struct.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\template-mixin.html : $(LANGUAGE_DDOC) language\template-mixin.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\template.html : $(LANGUAGE_DDOC) language\template.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\traits.html : $(LANGUAGE_DDOC) language\traits.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\type.html : $(LANGUAGE_DDOC) language\type.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\unittest.html : $(LANGUAGE_DDOC) language\unittest.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
+language\version.html : $(LANGUAGE_DDOC) language\version.dd
+	$(DMD) -o- -c -D -Df$*.html $(LANGUAGE_DDOC) $*.dd
+
 lazy-evaluation.html : $(DDOC) lazy-evaluation.dd
 
-spec.html : $(DDOC) spec.dd
-
-lex.html : $(DDOC) lex.dd
-
-grammar.html : $(DDOC) grammar.dd
-
 memory.html : $(DDOC) memory.dd
-
-memory-safe-d.html : $(DDOC) memory-safe-d.dd
 
 migrate-to-shared.html : $(DDOC) migrate-to-shared.dd
 
 mixin.html : $(DDOC) mixin.dd
 
-module.html : $(DDOC) module.dd
-
-objc_interface.html : $(DDOC) objc_interface.dd
-
-operatoroverloading.html : $(DDOC) operatoroverloading.dd
-
 overview.html : $(DDOC) overview.dd
 
-portability.html : $(DDOC) portability.dd
-
-pragma.html : $(DDOC) pragma.dd
-
 pretod.html : $(DDOC) pretod.dd
-
-property.html : $(DDOC) property.dd
 
 rationale.html : $(DDOC) rationale.dd
 
@@ -447,31 +524,13 @@ regular-expression.html : $(DDOC) regular-expression.dd
 
 safed.html : $(DDOC) safed.dd
 
-simd.html : $(DDOC) simd.dd
-
-statement.html : $(DDOC) statement.dd
-
-struct.html : $(DDOC) struct.dd
-
-template.html : $(DDOC) template.dd
-
 template-comparison.html : $(DDOC) template-comparison.dd
-
-template-mixin.html : $(DDOC) template-mixin.dd
 
 templates-revisited.html : $(DDOC) templates-revisited.dd
 
-traits.html : $(DDOC) traits.dd
-
 tuple.html : $(DDOC) tuple.dd
 
-type.html : $(DDOC) type.dd
-
-unittest.html : $(DDOC) unittest.dd
-
 variadic-function-templates.html : $(DDOC) variadic-function-templates.dd
-
-version.html : $(DDOC) version.dd
 
 warnings.html : $(DDOC) warnings.dd
 
@@ -495,8 +554,8 @@ modlist-release.ddoc : modlist.d
 dlangspec.d : $(SPECSRC) win32.mak
 	catdoc -odlangspec.d $(SPECSRC)
 
-dlangspec.html : $(DDOC) ebook.ddoc dlangspec.d
-	$(DMD) $(DDOC) ebook.ddoc dlangspec.d
+dlangspec.html : $(LANGUAGE_DDOC) ebook.ddoc dlangspec.d
+	$(DMD) $(LANGUAGE_DDOC) ebook.ddoc dlangspec.d
 
 dlangspec.zip : dlangspec.html ebook.css win32.mak
 	del dlangspec.zip
@@ -533,7 +592,7 @@ d.tag : chmgen.exe $(TARGETS)
 
 zip:
 	del doc.zip
-	zip32 doc win32.mak $(DDOC) windows.ddoc linux.ddoc osx.ddoc freebsd.ddoc ebook.ddoc
+	zip32 doc win32.mak $(LANGUAGE_DDOC) windows.ddoc linux.ddoc osx.ddoc freebsd.ddoc ebook.ddoc
 	zip32 doc $(SRC) $(PREMADE)
 	zip32 doc $(ASSETS)
 	zip32 doc ebook.css dlangspec.opf dlangspec.ncx dlangspec.png
