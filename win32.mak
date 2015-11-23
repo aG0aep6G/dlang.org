@@ -87,8 +87,9 @@ SPECTARGETS=language\spec.html language\intro.html language\lex.html \
 	language\traits.html language\errors.html language\unittest.html \
 	language\garbage.html language\float.html language\iasm.html \
 	language\ddoc.html language\interfaceToC.html language\cpp_interface.html \
-	language\portability.html language\entity.html language\memory-safe-d.html \
-	language\abi.html language\simd.html
+	language\objc_interface.html language\portability.html \
+	language\entity.html language\memory-safe-d.html language\abi.html \
+	language\simd.html
 
 TARGETS= $(SPECTARGETS) cpptod.html ctod.html pretod.html cppcontracts.html index.html overview.html	\
 	mixin.html memory.html windows.html \
@@ -120,21 +121,20 @@ TARGETS= $(SPECTARGETS) cpptod.html ctod.html pretod.html cppcontracts.html inde
 	changelog\2.068.0.html changelog\2.068.1.html \
 	changelog\2.068.2.html changelog\2.069.0.html changelog\2.069.1.html \
 	changelog\index.html \
-	glossary.html acknowledgements.html builtin.html interfaceToC.html	\
-	comparison.html rationale.html ddoc.html code_coverage.html		\
+	glossary.html acknowledgements.html builtin.html \
+	comparison.html rationale.html code_coverage.html \
 	exception-safe.html rdmd.html templates-revisited.html warnings.html	\
 	ascii-table.html windbg.html htod.html regular-expression.html		\
 	lazy-evaluation.html variadic-function-templates.html			\
 	howto-promote.html tuple.html template-comparison.html			\
-	template-mixin.html traits.html COM.html cpp_interface.html hijack.html	\
-	const3.html features2.html safed.html const-faq.html dmd-windows.html	\
+	COM.html hijack.html \
+	features2.html safed.html const-faq.html dmd-windows.html \
 	dmd-linux.html dmd-osx.html dmd-freebsd.html concepts.html		\
-	memory-safe-d.html d-floating-point.html migrate-to-shared.html		\
-	D1toD2.html unittest.html hash-map.html intro-to-datetime.html		\
-	simd.html deprecate.html download.html 32-64-portability.html		\
+	d-floating-point.html migrate-to-shared.html \
+	D1toD2.html intro-to-datetime.html \
+	deprecate.html download.html 32-64-portability.html \
 	d-array-article.html dll-linux.html bugstats.php.html getstarted.html \
-	gpg_keys.html forum-template.html css/cssmenu.css ctarguments.html \
-	objc_interface.html
+	gpg_keys.html forum-template.html css/cssmenu.css ctarguments.html
 
 # exclude list
 MOD_EXCLUDES_RELEASE=--ex=gc. --ex=rt. --ex=core.internal. --ex=core.stdc.config --ex=core.sys. \
