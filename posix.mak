@@ -187,11 +187,11 @@ $(DOC_OUTPUT_DIR)/changelog/%.html : changelog/%.dd $(CHANGELOG_DDOC) $(DMD)
 $(DOC_OUTPUT_DIR)/changelog/%.html : changelog/%_pre.dd $(CHANGELOG_PRE_DDOC) $(DMD)
 	$(DMD) -conf= -c -o- -Df$@ $(CHANGELOG_PRE_DDOC) $<
 
-$(DOC_OUTPUT_DIR)/%.html : %.dd $(DDOC) $(DMD)
-	$(DMD) -conf= -c -o- -Df$@ $(DDOC) $<
-
 $(DOC_OUTPUT_DIR)/language/%.html : language/%.dd $(LANGUAGE_DDOC) $(DMD)
 	$(DMD) -c -o- -Df$@ $(LANGUAGE_DDOC) $<
+
+$(DOC_OUTPUT_DIR)/%.html : %.dd $(DDOC) $(DMD)
+	$(DMD) -conf= -c -o- -Df$@ $(DDOC) $<
 
 $(DOC_OUTPUT_DIR)/%.verbatim : %.dd verbatim.ddoc $(DMD)
 	$(DMD) -c -o- -Df$@ verbatim.ddoc $<
