@@ -1667,7 +1667,7 @@ $(GNAME AssertExpression):
     )
 
     $(P The result type of an assert expression is $(D void).  Asserts are
-        a fundamental part of the $(DDLINK contracts, Contract Programming,
+        a fundamental part of the $(DDLINK language/contracts, Contract Programming,
         Contract Programming) support in D.
     )
 

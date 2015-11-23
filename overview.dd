@@ -458,7 +458,7 @@ $(SECTION3 Object Oriented Programming,
     )
     )
 
-    $(P See the $(LINK2 http://dlang.org/class.html, Classes) page for more
+    $(P See the $(LINK2 language/class.html, Classes) page for more
     information.
     )
 
@@ -471,7 +471,7 @@ $(SECTION3 Object Oriented Programming,
     )
     )
 
-    $(P See the $(LINK2 http://dlang.org/operatoroverloading.html, Operator Overloading)
+    $(P See the $(LINK2 language/operatoroverloading.html, Operator Overloading)
     page for more information.
     )
 )
@@ -504,7 +504,7 @@ $(SECTION3 Productivity,
     )
     )
 
-    $(P See the $(LINK2 http://dlang.org/module.html, Module)
+    $(P See the $(LINK2 language/module.html, Module)
     page for more information.
     )
 
@@ -588,7 +588,7 @@ class Bar
     )
     )
 
-    $(P See the $(LINK2 http://dlang.org/template.html, Templates)
+    $(P See the $(LINK2 language/template.html, Templates)
     page for more information.
     )
 
@@ -602,7 +602,7 @@ class Bar
     )
     )
 
-    $(P See the $(LINK2 http://dlang.org/hash-map.html, Associative Arrays)
+    $(P See the $(LINK2 language/hash-map.html, Associative Arrays)
     page for more information.
     )
 
@@ -919,7 +919,7 @@ for(; !employees.empty; employees.popFront())
         range, but not a sort, which requires a random access range with the
         slice operator overload defined. The requirements for each function can
         be seen in the function signature in the documentation in the template
-        constraints. See the $(LINK2 http://dlang.org/template.html, template)
+        constraints. See the $(LINK2 language/template.html, template)
         page and the range primitives link above for more details on template
         constraints.
         )
@@ -1032,7 +1032,7 @@ $(SECTION3 Performance,
     )
     )
 
-    $(P See the $(LINK2 http://dlang.org/iasm.html, Inline Assembler)
+    $(P See the $(LINK2 language/iasm.html, Inline Assembler)
     page for more information.
     )
 )
@@ -1091,7 +1091,7 @@ $(SECTION3 Reliability,
     )
     )
 
-    $(P See the $(LINK2 http://dlang.org/unittest.html, Unit Tests)
+    $(P See the $(LINK2 language/unittest.html, Unit Tests)
     page for more information.
     )
 
